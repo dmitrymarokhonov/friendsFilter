@@ -52,14 +52,6 @@ function makeDnD(zones) {
                     zone.insertBefore(currentDrag.node, li);
                     sortFriendsArrays();
 
-                    setTimeout(() => {
-                        populateFriendsList();
-                        populateNewFriendsList();
-                    }, 1500);
-
-                    console.log(currentDrag.source.id);
-                    console.log(currentDrag.node.dataset.id);
-
                 }
 
                 currentDrag = null;
