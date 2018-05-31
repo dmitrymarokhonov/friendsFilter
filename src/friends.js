@@ -39,24 +39,26 @@ function makeDnD(zones) {
                     const li = e.target.closest('.friends__item');
                     const FAitem = friendsArray.find(f => f.id === Number(DraggableFriendId));
                     const NFAitem = newFriendsArray.find(f => f.id === Number(DraggableFriendId));
+                    const fullName = currentDrag.node.innerText;
 
                     if (sourceUl === 'friendList') {
                         newFriendsArray.push(FAitem);
                         friendsArray = friendsArray.filter(f => f.id !== Number(DraggableFriendId));
+                        if(isMatching(fullName, filterFilteredList.value)){
+                            zone.insertBefore(currentDrag.node, li);
+                        }
                     }
                     if (sourceUl === 'filteredList') {
                         friendsArray.push(NFAitem);
                         newFriendsArray = newFriendsArray.filter(f => f.id !== Number(DraggableFriendId));
+                        if(isMatching(fullName, filterFullList.value)){
+                            zone.insertBefore(currentDrag.node, li);
+                        }
                     }
-
-                    zone.insertBefore(currentDrag.node, li);
                     sortFriendsArrays();
-
                 }
-
                 currentDrag = null;
             }
-
         });
     })
 }
